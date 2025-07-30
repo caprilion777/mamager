@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Footer() {
   const router = useRouter();
@@ -17,13 +18,13 @@ export default function Footer() {
   return (
     <footer style={{ width: '100vw', borderTop: '1px solid #eee', marginTop: '2rem', height: 64, minHeight: 64, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <div style={{ maxWidth: 1024, width: '100%', display: 'flex', alignItems: 'center', flexDirection: 'row', padding: '0 16px', height: '100%', position: 'relative' }}>
-        <a
+        <Link
           href="/"
-          onClick={handleLogoClick}
           style={{ display: 'flex', alignItems: 'center', height: '100%', minWidth: 0, marginRight: 32, background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+          onClick={handleLogoClick}
         >
           <Image src="/logo.png" alt="mamager logo" width={160} height={64} style={{ objectFit: 'contain', flexShrink: 0, height: '100%', width: 'auto' }} />
-        </a>
+        </Link>
         <div style={{
           textAlign: 'center',
           fontSize: '12px',
