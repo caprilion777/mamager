@@ -16,7 +16,7 @@ export default function Footer() {
   }
 
   return (
-    <footer style={{ width: '100vw', borderTop: '1px solid #eee', marginTop: '2rem', height: 64, minHeight: 64, display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#000000' }}>
+    <footer style={{ width: '100vw', height: 64, minHeight: 64, display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#000000' }}>
       <div style={{ maxWidth: 1024, width: '100%', display: 'flex', alignItems: 'center', flexDirection: 'row', padding: '0 16px', height: '100%', position: 'relative' }}>
         <Link
           href="/"
