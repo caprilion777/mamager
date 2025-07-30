@@ -16,7 +16,7 @@ export default function Footer() {
   }
 
   return (
-    <footer style={{ width: '100vw', borderTop: '1px solid #eee', marginTop: '2rem', height: 64, minHeight: 64, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <footer style={{ width: '100vw', borderTop: '1px solid #eee', marginTop: '2rem', height: 64, minHeight: 64, display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#000000' }}>
       <div style={{ maxWidth: 1024, width: '100%', display: 'flex', alignItems: 'center', flexDirection: 'row', padding: '0 16px', height: '100%', position: 'relative' }}>
         <Link
           href="/"
@@ -34,9 +34,9 @@ export default function Footer() {
           transform: 'translate(-50%, -50%)',
           width: 'max-content',
         }}>
-          <div style={{ color: '#FFFFFF', fontWeight: 600 }}>© 2025 mamager.ai | All rights reserved.</div>
+          <div style={{ color: '#FFFFFF' }}>© 2025 mamager.ai | All rights reserved.</div>
           <div>
-            <a href="#" style={{ color: '#EB6E8A', textDecoration: 'none', fontWeight: 600 }}>Terms and Conditions</a>
+            <a href="#" style={{ color: '#EB6E8A', textDecoration: 'none' }}>Terms and Conditions</a>
           </div>
         </div>
       </div>

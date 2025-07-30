@@ -8,10 +8,10 @@ export default function Header() {
         <Link href="/" style={{ position: 'absolute', left: 16, height: '100%', display: 'flex', alignItems: 'center' }}>
           <Image src="/logo.png" alt="mamager logo" width={160} height={160} style={{ objectFit: 'contain', flexShrink: 0, height: '100%', width: 'auto' }} />
         </Link>
-        <nav style={{ display: 'flex', gap: '1rem', position: 'absolute', left: '50%', transform: 'translateX(-50%)', whiteSpace: 'nowrap', height: '100%', alignItems: 'center' }}>
-          <a href="#features" style={{ color: '#000', textDecoration: 'none', fontWeight: 600, whiteSpace: 'nowrap', fontSize: '13px', display: 'flex', alignItems: 'center', height: '100%' }}>Key Features and Benefits</a>
-          <a href="#how" style={{ color: '#000', textDecoration: 'none', fontWeight: 600, whiteSpace: 'nowrap', fontSize: '13px', display: 'flex', alignItems: 'center', height: '100%' }}>How the service works</a>
-          <a href="#subscribe" style={{ color: '#000', textDecoration: 'none', fontWeight: 600, whiteSpace: 'nowrap', fontSize: '13px', display: 'flex', alignItems: 'center', height: '100%' }}>Subscribe Now</a>
+        <nav style={{ display: 'flex', gap: '1.25rem', position: 'absolute', left: '50%', transform: 'translateX(-50%)', whiteSpace: 'nowrap', height: '100%', alignItems: 'center' }}>
+          <a href="#features" style={{ color: '#000', textDecoration: 'none', fontWeight: 500, whiteSpace: 'nowrap', fontSize: '13px', display: 'flex', alignItems: 'center', height: '100%' }}>Key Features and Benefits</a>
+          <a href="#how" style={{ color: '#000', textDecoration: 'none', fontWeight: 500, whiteSpace: 'nowrap', fontSize: '13px', display: 'flex', alignItems: 'center', height: '100%' }}>How the service works</a>
+          <a href="#subscribe" style={{ color: '#000', textDecoration: 'none', fontWeight: 500, whiteSpace: 'nowrap', fontSize: '13px', display: 'flex', alignItems: 'center', height: '100%' }}>Subscribe Now</a>
         </nav>
       </div>
     </header>
