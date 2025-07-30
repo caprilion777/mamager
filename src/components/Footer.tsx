@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Footer() {
   const router = useRouter();
 
-  function handleLogoClick(e) {
+  function handleLogoClick(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
     setTimeout(() => {
