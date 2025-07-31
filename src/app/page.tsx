@@ -21,7 +21,7 @@ export default function Home() {
               <div>
                 <div style={{ fontWeight: 700, fontSize: '16px', marginBottom: 16 }}>Save Time and Money</div>
                 <div style={{ fontWeight: 600, marginBottom: 4 }}>Intelligent Planning:</div>
-                <div style={{ marginBottom: 12 }}>Mamager.ai automatically creates a shopping list based on your child's age, preferences, and seasonal needs.</div>
+                <div style={{ marginBottom: 12 }}>Mamager.ai automatically creates a shopping list based on your child&apos;s age, preferences, and seasonal needs.</div>
                 <div style={{ fontWeight: 600, marginBottom: 4 }}>Discount Alerts:</div>
                 <div style={{ marginBottom: 12 }}>Get notifications about the best deals and promotions so you can shop smart and save big.</div>
               </div>
@@ -32,7 +32,7 @@ export default function Home() {
               <div>
                 <div style={{ fontWeight: 700, fontSize: '16px', marginBottom: 16 }}>Everything Your Baby Needs in One App</div>
                 <div style={{ fontWeight: 600, marginBottom: 4 }}>Personalized Shopping Plans:</div>
-                <div style={{ marginBottom: 12 }}>From diapers to toys, plan and manage purchases tailored to your child's evolving needs.</div>
+                <div style={{ marginBottom: 12 }}>From diapers to toys, plan and manage purchases tailored to your child&apos;s evolving needs.</div>
                 <div style={{ fontWeight: 600, marginBottom: 4 }}>Automatic Updates:</div>
                 <div style={{ marginBottom: 12 }}>The app adjusts its recommendations as your child grows, ensuring you always have the right products.</div>
               </div>
