@@ -19,7 +19,6 @@ export default function Header() {
     const headerHeight = 64;
     const onScroll = () => {
       let currentSection = '';
-      const scrollPosition = window.scrollY + headerHeight;
       
       // Find the section that's most prominently in view
       let maxVisibility = 0;
@@ -74,7 +73,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              onClick={(e) => {
+              onClick={() => {
                 setClickedSection(`${link.href}-${Date.now()}`);
                 // Clear any existing timeout
                 if (clickTimeout) {

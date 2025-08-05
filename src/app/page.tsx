@@ -1,5 +1,6 @@
 import Hero from "../components/Hero";
 import SubscribeForm from "../components/SubscribeForm";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -25,7 +26,7 @@ export default function Home() {
                 <div style={{ fontWeight: 600, marginBottom: 4 }}>Discount Alerts:</div>
                 <div style={{ marginBottom: 12 }}>Get notifications about the best deals and promotions so you can shop smart and save big.</div>
               </div>
-              <img src="/features/money.svg" alt="Save Time and Money" width={72} height={72} style={{ flexShrink: 0 }} />
+              <Image src="/features/money.svg" alt="Save Time and Money" width={72} height={72} style={{ flexShrink: 0 }} />
             </div>
             {/* 2 */}
             <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
@@ -36,7 +37,7 @@ export default function Home() {
                 <div style={{ fontWeight: 600, marginBottom: 4 }}>Automatic Updates:</div>
                 <div style={{ marginBottom: 12 }}>The app adjusts its recommendations as your child grows, ensuring you always have the right products.</div>
               </div>
-              <img src="/features/tray.svg" alt="Everything Your Baby Needs in One App" width={72} height={72} style={{ flexShrink: 0 }} />
+              <Image src="/features/tray.svg" alt="Everything Your Baby Needs in One App" width={72} height={72} style={{ flexShrink: 0 }} />
             </div>
             {/* 3 */}
             <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
@@ -47,7 +48,7 @@ export default function Home() {
                 <div style={{ fontWeight: 600, marginBottom: 4 }}>Home Delivery:</div>
                 <div style={{ marginBottom: 12 }}>Order everything you need to your doorstep with our seamless integration with leading retailers.</div>
               </div>
-              <img src="/features/clock.svg" alt="More Time for Family" width={72} height={72} style={{ flexShrink: 0 }} />
+              <Image src="/features/clock.svg" alt="More Time for Family" width={72} height={72} style={{ flexShrink: 0 }} />
             </div>
             {/* 4 */}
             <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
@@ -58,7 +59,7 @@ export default function Home() {
                 <div style={{ fontWeight: 600, marginBottom: 4 }}>Confidential:</div>
                 <div style={{ marginBottom: 12 }}>We ensure your information remains private and is never shared with third parties.</div>
               </div>
-              <img src="/features/shield.svg" alt="Security Features" width={72} height={72} style={{ flexShrink: 0 }} />
+              <Image src="/features/shield.svg" alt="Security Features" width={72} height={72} style={{ flexShrink: 0 }} />
             </div>
           </div>
         </section>
@@ -214,7 +215,7 @@ export default function Home() {
                 <p style={{ 
                   lineHeight: 1.6
                 }}>
-                  Now it plans and remembers everything, and all that's required from you is just confirmation and your preferences
+                  Now it plans and remembers everything, and all that&apos;s required from you is just confirmation and your preferences
                 </p>
               </div>
             </div>
