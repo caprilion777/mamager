@@ -62,8 +62,166 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="how" style={{ minHeight: 300, padding: '4rem 0', borderBottom: '1px solid #eee' }} />
       </div>
+
+      {/* How the service works section - Full width */}
+      <section id="how" style={{ 
+        minHeight: 600, 
+        padding: '4rem 0', 
+        borderBottom: '1px solid #eee', 
+        scrollMarginTop: '64px',
+        backgroundColor: '#FDF2ED',
+        width: '100vw',
+        margin: 0
+      }}>
+        <div style={{ maxWidth: 900, margin: '0 auto', padding: '0 16px' }}>
+          <h2 style={{ 
+            textAlign: 'center', 
+            fontSize: '24px', 
+            fontWeight: 700, 
+            marginBottom: '3rem',
+            color: '#333'
+          }}>
+            How the service works
+          </h2>
+          <p style={{ 
+            textAlign: 'center', 
+            fontSize: '16px', 
+            marginBottom: '4rem',
+            lineHeight: 1.6
+          }}>
+            Mamager.ai - a simple and convenient service that saves you time and money
+          </p>
+          
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '4rem',
+            alignItems: 'stretch'
+          }}>
+            {/* Step 01 - Left aligned */}
+            <div style={{ 
+              display: 'flex', 
+              gap: '2rem', 
+              alignItems: 'flex-start',
+              position: 'relative',
+              justifyContent: 'flex-start',
+              maxWidth: '60%',
+              alignSelf: 'flex-start'
+            }}>
+              <div style={{
+                fontSize: '120px',
+                fontWeight: 700,
+                color: '#EBA5B1 !important',
+                opacity: 0.3,
+                lineHeight: 1,
+                position: 'absolute',
+                left: '-20px',
+                top: '-20px',
+                zIndex: 0
+              }}>
+                01
+              </div>
+              <div style={{ position: 'relative', zIndex: 1, marginLeft: '60px' }}>
+                <h3 style={{ 
+                  fontSize: '16px', 
+                  fontWeight: 700, 
+                  marginBottom: '1rem',
+                  color: '#333'
+                }}>
+                  Register in the service
+                </h3>
+                <p style={{ 
+                  lineHeight: 1.6
+                }}>
+                  Register in the service, enter your wishes and the age, height and other data of the child
+                </p>
+              </div>
+            </div>
+
+            {/* Step 02 - Right aligned */}
+            <div style={{ 
+              display: 'flex', 
+              gap: '2rem', 
+              alignItems: 'flex-start',
+              position: 'relative',
+              justifyContent: 'flex-end',
+              maxWidth: '60%',
+              alignSelf: 'flex-end'
+            }}>
+              <div style={{
+                fontSize: '120px',
+                fontWeight: 700,
+                color: '#EBA5B1 !important',
+                opacity: 0.3,
+                lineHeight: 1,
+                position: 'absolute',
+                left: '-20px',
+                top: '-20px',
+                zIndex: 0
+              }}>
+                02
+              </div>
+              <div style={{ position: 'relative', zIndex: 1, marginLeft: '60px' }}>
+                <h3 style={{ 
+                  fontSize: '16px', 
+                  fontWeight: 700, 
+                  marginBottom: '1rem',
+                  color: '#333'
+                }}>
+                  Get a shopping plan
+                </h3>
+                <p style={{ 
+                  lineHeight: 1.6
+                }}>
+                  Get a purchase plan, make suggestions and adjustments if necessary
+                </p>
+              </div>
+            </div>
+
+            {/* Step 03 - Left aligned */}
+            <div style={{ 
+              display: 'flex', 
+              gap: '2rem', 
+              alignItems: 'flex-start',
+              position: 'relative',
+              justifyContent: 'flex-start',
+              maxWidth: '60%',
+              alignSelf: 'flex-start'
+            }}>
+              <div style={{
+                fontSize: '120px',
+                fontWeight: 700,
+                color: '#EBA5B1 !important',
+                opacity: 0.3,
+                lineHeight: 1,
+                position: 'absolute',
+                left: '-20px',
+                top: '-20px',
+                zIndex: 0
+              }}>
+                03
+              </div>
+              <div style={{ position: 'relative', zIndex: 1, marginLeft: '60px' }}>
+                <h3 style={{ 
+                  fontSize: '16px', 
+                  fontWeight: 700, 
+                  marginBottom: '1rem',
+                  color: '#333'
+                }}>
+                  Receive your purchases
+                </h3>
+                <p style={{ 
+                  lineHeight: 1.6
+                }}>
+                  Now it plans and remembers everything, and all that's required from you is just confirmation and your preferences
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <SubscribeForm />
     </>
   );

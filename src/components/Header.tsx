@@ -12,31 +12,56 @@ const navLinks = [
 
 export default function Header() {
   const [active, setActive] = useState('');
+  const [clickedSection, setClickedSection] = useState('');
+  const [clickTimeout, setClickTimeout] = useState<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
+    useEffect(() => {
     const headerHeight = 64;
     const onScroll = () => {
-      const firstSection = document.getElementById(navLinks[0].href.replace('#', ''));
-      if (firstSection) {
-        const firstTop = firstSection.offsetTop;
-        if (window.scrollY + headerHeight < firstTop) {
-          setActive('');
-          return;
+      let currentSection = '';
+      const scrollPosition = window.scrollY + headerHeight;
+      
+      // Find the section that's most prominently in view
+      let maxVisibility = 0;
+      
+      navLinks.forEach(link => {
+        const element = document.getElementById(link.href.replace('#', ''));
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const viewportHeight = window.innerHeight;
+          
+          // Calculate how much of the section is visible
+          const visibleTop = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
+          const visibility = visibleTop / Math.min(rect.height, viewportHeight);
+          
+          // Prefer sections that are more visible and closer to the top of viewport
+          const topDistance = Math.abs(rect.top);
+          const score = visibility - (topDistance / viewportHeight) * 0.5;
+          
+          if (score > maxVisibility) {
+            maxVisibility = score;
+            currentSection = link.href;
+          }
         }
-      }
-      const offsets = navLinks.map(link => {
-        const el = document.getElementById(link.href.replace('#', ''));
-        if (!el) return { href: link.href, top: Infinity };
-        const rect = el.getBoundingClientRect();
-        return { href: link.href, top: Math.abs(rect.top - headerHeight) };
       });
-      offsets.sort((a, b) => a.top - b.top);
-      setActive(offsets[0].href);
+      
+      // If we're at the very top, clear active section
+      if (window.scrollY < 100) {
+        currentSection = '';
+      }
+      
+      // If a section was recently clicked, prioritize it for a short time
+      if (clickedSection && Date.now() - parseInt(clickedSection.split('-')[1] || '0') < 1000) {
+        currentSection = clickedSection.split('-')[0];
+      }
+      
+      setActive(currentSection);
     };
+    
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [clickedSection]);
 
   return (
     <header style={{ position: 'fixed', top: 0, left: 0, width: '100vw', zIndex: 10, background: 'rgba(255, 248, 246, 0.5)', borderBottom: 'none', height: 64, minHeight: 64, display: 'flex', alignItems: 'center', boxShadow: '0 8px 32px 0 rgba(0,0,0,0.24)' }}>
@@ -49,6 +74,18 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => {
+                setClickedSection(`${link.href}-${Date.now()}`);
+                // Clear any existing timeout
+                if (clickTimeout) {
+                  clearTimeout(clickTimeout);
+                }
+                // Clear the clicked section after 1 second
+                const timeout = setTimeout(() => {
+                  setClickedSection('');
+                }, 1000);
+                setClickTimeout(timeout);
+              }}
               style={{
                 color: active === link.href ? '#EB6E8A' : '#000',
                 textDecoration: 'none',
@@ -60,6 +97,7 @@ export default function Header() {
                 height: '100%',
                 transition: 'color 0.2s',
               }}
+              title={`Active: ${active === link.href ? 'Yes' : 'No'}`}
             >
               {link.label}
             </a>
