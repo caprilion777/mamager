@@ -36,7 +36,7 @@ export default function Footer() {
         }}>
           <div style={{ color: '#FFFFFF' }}>© 2025 mamager.ai | All rights reserved.</div>
           <div>
-            <a href="#" style={{ color: '#EB6E8A', textDecoration: 'none' }}>Terms and Conditions</a>
+            <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: '#EB6E8A', textDecoration: 'none' }}>Terms and Conditions</a>
           </div>
         </div>
       </div>

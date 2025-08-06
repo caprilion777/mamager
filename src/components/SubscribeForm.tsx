@@ -1,6 +1,38 @@
 'use client';
 
+import React from 'react';
+
 export default function SubscribeForm() {
+  // Add light sweep animation
+  React.useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      .shimmer-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        animation: sweep 4s ease-in-out infinite;
+      }
+      @keyframes sweep {
+        0% { left: -100%; }
+        50% { left: 100%; }
+        100% { left: 100%; }
+      }
+      .shimmer-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(235, 110, 138, 0.4);
+      }
+      .shimmer-button:active {
+        transform: scale(1.05);
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
   const inputStyle = {
     fontSize: '16px',
     fontWeight: 400,
@@ -9,20 +41,27 @@ export default function SubscribeForm() {
     outline: 'none',
     transition: 'border-color 0.3s ease',
     backgroundColor: 'white',
-    boxSizing: 'border-box' as const
+    boxSizing: 'border-box' as const,
+    height: '41px',
+    padding: '0 13px'
   };
   const buttonStyle = {
     fontSize: '16px',
     fontWeight: 600,
     border: 'none',
     borderRadius: '999px',
-    backgroundColor: '#EB6E8A',
+    background: '#EB6E8A',
     color: 'white',
     cursor: 'pointer',
-    transition: 'background-color 0.3s ease',
+    transition: 'all 0.3s ease',
     whiteSpace: 'nowrap' as const,
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: '13px 20px',
+    height: '41px',
+    position: 'relative' as const,
+    overflow: 'hidden',
+    boxShadow: '0 4px 15px rgba(235, 110, 138, 0.3)'
   };
 
   return (
@@ -55,7 +94,7 @@ export default function SubscribeForm() {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
         zIndex: -1
       }} />
       {/* Subscription Content */}
@@ -105,14 +144,13 @@ export default function SubscribeForm() {
             onFocus={(e) => (e.target as HTMLInputElement).style.borderColor = '#EB6E8A'}
             onBlur={(e) => (e.target as HTMLInputElement).style.borderColor = '#e0e0e0'}
           />
-          <button
-            type="submit"
-            style={buttonStyle}
-            onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#d45a7a'}
-            onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#EB6E8A'}
-          >
-            Subscribe
-          </button>
+                     <button
+             type="submit"
+             style={buttonStyle}
+             className="shimmer-button"
+           >
+             Subscribe
+           </button>
         </form>
       </div>
     </section>
