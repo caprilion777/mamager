@@ -14,77 +14,101 @@ export default function Header() {
   const [active, setActive] = useState('');
   const [clickedSection, setClickedSection] = useState('');
   const [clickTimeout, setClickTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    useEffect(() => {
+  useEffect(() => {
     const headerHeight = 64;
     const onScroll = () => {
       let currentSection = '';
-      
-      // Find the section that's most prominently in view
       let maxVisibility = 0;
-      
       navLinks.forEach(link => {
         const element = document.getElementById(link.href.replace('#', ''));
         if (element) {
           const rect = element.getBoundingClientRect();
           const viewportHeight = window.innerHeight;
-          
-          // Calculate how much of the section is visible
           const visibleTop = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
           const visibility = visibleTop / Math.min(rect.height, viewportHeight);
-          
-          // Prefer sections that are more visible and closer to the top of viewport
           const topDistance = Math.abs(rect.top);
           const score = visibility - (topDistance / viewportHeight) * 0.5;
-          
           if (score > maxVisibility) {
             maxVisibility = score;
             currentSection = link.href;
           }
         }
       });
-      
-      // If we're at the very top, clear active section
       if (window.scrollY < 100) {
         currentSection = '';
       }
-      
-      // If a section was recently clicked, prioritize it for a short time
       if (clickedSection && Date.now() - parseInt(clickedSection.split('-')[1] || '0') < 1000) {
         currentSection = clickedSection.split('-')[0];
       }
-      
       setActive(currentSection);
     };
-    
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, [clickedSection]);
 
+  // Close menu on nav click (mobile)
+  const handleNavClick = (href: string) => {
+    setClickedSection(`${href}-${Date.now()}`);
+    if (clickTimeout) clearTimeout(clickTimeout);
+    const timeout = setTimeout(() => setClickedSection(''), 1000);
+    setClickTimeout(timeout);
+    setMenuOpen(false);
+  };
+
+  // Responsive styles
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 600;
+
   return (
-    <header style={{ position: 'fixed', top: 0, left: 0, width: '100vw', zIndex: 10, background: 'rgba(255, 248, 246, 0.5)', borderBottom: 'none', height: 64, minHeight: 64, display: 'flex', alignItems: 'center', boxShadow: '0 8px 32px 0 rgba(0,0,0,0.24)' }}>
+    <header style={{ position: 'fixed', top: 0, left: 0, width: '100vw', zIndex: 1000, background: 'rgba(255, 248, 246, 0.5)', borderBottom: 'none', height: 64, minHeight: 64, display: 'flex', alignItems: 'center', boxShadow: '0 8px 32px 0 rgba(0,0,0,0.24)' }}>
       <div style={{ maxWidth: 1024, margin: '0 auto', padding: '0 16px', display: 'flex', alignItems: 'center', height: 64, width: '100%', position: 'relative' }}>
-        <Link href="/" style={{ position: 'absolute', left: 16, height: '100%', display: 'flex', alignItems: 'center' }}>
+        <Link href="/" style={{ position: 'absolute', left: 16, height: '100%', display: 'flex', alignItems: 'center', zIndex: 200 }}>
           <Image src="/logo.png" alt="mamager logo" width={160} height={160} style={{ objectFit: 'contain', flexShrink: 0, height: '100%', width: 'auto' }} />
         </Link>
-        <nav style={{ display: 'flex', gap: '1.25rem', position: 'absolute', left: '50%', transform: 'translateX(-50%)', whiteSpace: 'nowrap', height: '100%', alignItems: 'center' }}>
+        {/* Burger icon for mobile */}
+        <button
+          aria-label="Open menu"
+          onClick={() => setMenuOpen(v => !v)}
+          className="burger-menu-btn"
+          style={{
+            display: 'none',
+            position: 'absolute',
+            right: 16,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            background: 'none',
+            border: 'none',
+            padding: 8,
+            zIndex: 20,
+            cursor: 'pointer',
+          }}
+        >
+          {/* Simple burger icon */}
+          <span style={{ display: 'block', width: 28, height: 3, background: '#333', marginBottom: 6, borderRadius: 2 }} />
+          <span style={{ display: 'block', width: 28, height: 3, background: '#333', marginBottom: 6, borderRadius: 2 }} />
+          <span style={{ display: 'block', width: 28, height: 3, background: '#333', borderRadius: 2 }} />
+        </button>
+        {/* Desktop nav */}
+        <nav
+          style={{
+            display: 'flex',
+            gap: '1.25rem',
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            whiteSpace: 'nowrap',
+            height: '100%',
+            alignItems: 'center',
+          }}
+          className="header-nav"
+        >
           {navLinks.map(link => (
             <a
               key={link.href}
               href={link.href}
-              onClick={() => {
-                setClickedSection(`${link.href}-${Date.now()}`);
-                // Clear any existing timeout
-                if (clickTimeout) {
-                  clearTimeout(clickTimeout);
-                }
-                // Clear the clicked section after 1 second
-                const timeout = setTimeout(() => {
-                  setClickedSection('');
-                }, 1000);
-                setClickTimeout(timeout);
-              }}
+              onClick={() => handleNavClick(link.href)}
               style={{
                 color: active === link.href ? '#EB6E8A' : '#000',
                 textDecoration: 'none',
@@ -102,7 +126,78 @@ export default function Header() {
             </a>
           ))}
         </nav>
+        {/* Mobile nav overlay */}
+        <nav
+          style={{
+            display: menuOpen ? 'flex' : 'none',
+            flexDirection: 'column',
+            position: 'fixed',
+            top: 64,
+            right: 0,
+            left: 0, // full width
+            width: '100vw',
+            maxWidth: '100vw',
+            background: '#FDF2ED',
+            boxShadow: 'none',
+            zIndex: 1100,
+            padding: '24px 16px',
+            gap: 24,
+            borderRadius: 0,
+            alignItems: 'center', // center buttons
+          }}
+          className="mobile-nav"
+        >
+          {navLinks.map(link => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => handleNavClick(link.href)}
+              style={{
+                color: active === link.href ? '#EB6E8A' : '#000',
+                textDecoration: 'none',
+                fontWeight: 600,
+                fontSize: '18px',
+                padding: '8px 0',
+                display: 'block',
+              }}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
       </div>
+      <style jsx>{`
+        @media (max-width: 600px) {
+          .header-nav {
+            display: none !important;
+          }
+          .burger-menu-btn {
+            display: block !important;
+          }
+          header {
+            height: auto !important;
+            min-height: 0 !important;
+            padding: 0 !important;
+          }
+          .header-logo {
+            height: auto !important;
+            min-height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100% !important;
+          }
+          .header-logo img {
+            height: 36px !important;
+            width: auto !important;
+            margin: 0 auto !important;
+            display: block !important;
+            padding: 0 !important;
+          }
+        }
+      `}</style>
     </header>
   );
 }
