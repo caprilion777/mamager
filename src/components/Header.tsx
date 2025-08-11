@@ -62,14 +62,20 @@ export default function Header() {
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 600;
 
   return (
-    <header style={{ position: 'fixed', top: 0, left: 0, width: '100vw', zIndex: 1000, background: 'rgba(255, 248, 246, 0.5)', borderBottom: 'none', height: 64, minHeight: 64, display: 'flex', alignItems: 'center', boxShadow: '0 8px 32px 0 rgba(0,0,0,0.24)' }}>
+    <header style={{ position: 'fixed', top: 0, left: 0, width: '100vw', zIndex: 1000, background: '#FDF2ED', borderBottom: 'none', height: 64, minHeight: 64, display: 'flex', alignItems: 'center', boxShadow: '0 8px 32px 0 rgba(0,0,0,0.24)' }}>
       <div style={{ maxWidth: 1024, margin: '0 auto', padding: '0 16px', display: 'flex', alignItems: 'center', height: 64, width: '100%', position: 'relative' }}>
-        <Link href="/" style={{ position: 'absolute', left: 16, height: '100%', display: 'flex', alignItems: 'center', zIndex: 200 }}>
+        <Link
+          href="/"
+          onClick={() => {
+            if (menuOpen) setMenuOpen(false);
+          }}
+          style={{ position: 'absolute', left: 16, height: '100%', display: 'flex', alignItems: 'center', zIndex: 200 }}
+        >
           <Image src="/logo.png" alt="mamager logo" width={160} height={160} style={{ objectFit: 'contain', flexShrink: 0, height: '100%', width: 'auto' }} />
         </Link>
         {/* Burger icon for mobile */}
         <button
-          aria-label="Open menu"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           onClick={() => setMenuOpen(v => !v)}
           className="burger-menu-btn"
           style={{
@@ -86,9 +92,43 @@ export default function Header() {
           }}
         >
           {/* Simple burger icon */}
-          <span style={{ display: 'block', width: 28, height: 3, background: '#333', marginBottom: 6, borderRadius: 2 }} />
-          <span style={{ display: 'block', width: 28, height: 3, background: '#333', marginBottom: 6, borderRadius: 2 }} />
-          <span style={{ display: 'block', width: 28, height: 3, background: '#333', borderRadius: 2 }} />
+          <span
+            style={{
+              display: 'block',
+              width: 28,
+              height: 3,
+              background: '#EB6E8A',
+              marginBottom: 6,
+              borderRadius: 2,
+              transition: 'transform 200ms ease, opacity 200ms ease, background-color 200ms ease',
+              transformOrigin: 'center',
+              transform: menuOpen ? 'translateY(9px) rotate(45deg)' : 'none',
+            }}
+          />
+          <span
+            style={{
+              display: 'block',
+              width: 28,
+              height: 3,
+              background: '#EB6E8A',
+              marginBottom: 6,
+              borderRadius: 2,
+              transition: 'transform 200ms ease, opacity 200ms ease, background-color 200ms ease',
+              opacity: menuOpen ? 0 : 1,
+            }}
+          />
+          <span
+            style={{
+              display: 'block',
+              width: 28,
+              height: 3,
+              background: '#EB6E8A',
+              borderRadius: 2,
+              transition: 'transform 200ms ease, opacity 200ms ease, background-color 200ms ease',
+              transformOrigin: 'center',
+              transform: menuOpen ? 'translateY(-9px) rotate(-45deg)' : 'none',
+            }}
+          />
         </button>
         {/* Desktop nav */}
         <nav
@@ -112,7 +152,7 @@ export default function Header() {
               style={{
                 color: active === link.href ? '#EB6E8A' : '#000',
                 textDecoration: 'none',
-                fontWeight: 500,
+                fontWeight: 700,
                 whiteSpace: 'nowrap',
                 fontSize: '13px',
                 display: 'flex',

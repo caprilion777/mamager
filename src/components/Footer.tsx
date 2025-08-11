@@ -21,10 +21,10 @@ export default function Footer() {
         <Link
           href="/"
           className="footer-logo"
-          style={{ display: 'flex', alignItems: 'center', height: '100%', minWidth: 0, background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+          style={{ display: 'flex', alignItems: 'center', height: 64, minWidth: 0, background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
           onClick={handleLogoClick}
         >
-          <Image src="/logo.png" alt="mamager logo" width={160} height={64} style={{ objectFit: 'contain', flexShrink: 0, height: '100%', width: 'auto' }} />
+          <Image src="/logo.png" alt="mamager logo" width={160} height={64} style={{ objectFit: 'contain', flexShrink: 0, height: 64, width: 'auto' }} />
         </Link>
         <div className="footer-texts" style={{
           textAlign: 'center',
@@ -43,6 +43,7 @@ export default function Footer() {
       </div>
       <style jsx>{`
         @media (max-width: 600px) {
+          /* Use identical top/bottom padding so space above logo equals space below terms */
           footer {
             padding: 16px 0 !important;
           }
@@ -54,7 +55,12 @@ export default function Footer() {
             position: static !important;
             width: 100% !important;
             height: auto !important;
+            gap: 8px !important; /* controls spacing between logo and texts */
           }
+          /* Guard against extra external margins altering perceived top/bottom space */
+          .footer-inner > :first-child { margin-top: 0 !important; }
+          .footer-inner > :last-child { margin-bottom: 0 !important; }
+
           .footer-logo {
             margin: 0 !important;
             padding: 0 !important;
@@ -67,14 +73,14 @@ export default function Footer() {
           .footer-logo img {
             height: 36px !important;
             width: auto !important;
-            margin: 0 auto 8px auto !important;
+            margin: 0 auto !important; /* rely on .footer-inner gap instead of img margin */
             display: block !important;
             padding: 0 !important;
           }
           .footer-texts {
             width: 100% !important;
             font-size: 13px !important;
-            margin-bottom: 4px !important;
+            margin-bottom: 0 !important;
             display: flex !important;
             flex-direction: column !important;
             align-items: center !important;
@@ -91,7 +97,7 @@ export default function Footer() {
           .footer-texts a {
             margin-top: 0 !important;
             font-size: 13px !important;
-            padding: 4px 0 !important;
+            padding: 0 !important;
           }
         }
       `}</style>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import styles from "./Hero.module.css";
 
 export default function Hero() {
   return (
@@ -28,8 +29,7 @@ export default function Hero() {
         maxWidth: '800px',
         padding: '0 20px'
       }}>
-        <div style={{
-          fontSize: '2.8rem',
+        <div className={styles.heroTitle} style={{
           fontWeight: 'bold',
           marginBottom: '4rem',
           textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
@@ -38,8 +38,7 @@ export default function Hero() {
           <div>Smart Baby Shopping</div>
           <div>Planning with Mamager.ai</div>
         </div>
-        <p style={{
-          fontSize: '1.5rem',
+        <p className={styles.heroSubtitle} style={{
           margin: 0,
           textShadow: '1px 1px 2px rgba(0,0,0,0.7)',
           lineHeight: '1.4'

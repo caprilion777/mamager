@@ -9,7 +9,7 @@ export default function Home() {
       <div style={{ maxWidth: 1024, margin: "0 auto", padding: "0 16px 0 16px", marginTop: "64px" }}>
         <section id="features" className="features-section" style={{ minHeight: 300, padding: '4rem 0', borderBottom: '1px solid #eee', marginTop: '56px', scrollMarginTop: '64px' }}>
           <h2 style={{ textAlign: 'center', fontSize: '24px', fontWeight: 700, marginBottom: '3rem' }}>Key Features and Benefits</h2>
-          <div style={{
+          <div className="features-grid" style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
             gap: '3rem 2rem',
@@ -18,7 +18,7 @@ export default function Home() {
             margin: '0 auto',
           }}>
             {/* 1 */}
-            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+            <div className="feature-item" style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: '16px', marginBottom: 16 }}>Save Time and Money</div>
                 <div style={{ fontWeight: 600, marginBottom: 4 }}>Intelligent Planning:</div>
@@ -29,7 +29,7 @@ export default function Home() {
               <Image src="/features/money.svg" alt="Save Time and Money" width={72} height={72} style={{ flexShrink: 0 }} />
             </div>
             {/* 2 */}
-            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+            <div className="feature-item" style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: '16px', marginBottom: 16 }}>Everything Your Baby Needs in One App</div>
                 <div style={{ fontWeight: 600, marginBottom: 4 }}>Personalized Shopping Plans:</div>
@@ -40,7 +40,7 @@ export default function Home() {
               <Image src="/features/tray.svg" alt="Everything Your Baby Needs in One App" width={72} height={72} style={{ flexShrink: 0 }} />
             </div>
             {/* 3 */}
-            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+            <div className="feature-item" style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: '16px', marginBottom: 16 }}>More Time for Family</div>
                 <div style={{ fontWeight: 600, marginBottom: 4 }}>Simplicity and Convenience:</div>
@@ -51,7 +51,7 @@ export default function Home() {
               <Image src="/features/clock.svg" alt="More Time for Family" width={72} height={72} style={{ flexShrink: 0 }} />
             </div>
             {/* 4 */}
-            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+            <div className="feature-item" style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: '16px', marginBottom: 16 }}>Security Features</div>
                 <div style={{ fontWeight: 600, marginBottom: 4 }}>Reliable:</div>
@@ -94,14 +94,14 @@ export default function Home() {
             Mamager.ai - a simple and convenient service that saves you time and money
           </p>
           
-          <div style={{
+          <div className="how-steps" style={{
             display: 'flex',
             flexDirection: 'column',
             gap: '4rem',
             alignItems: 'stretch'
           }}>
             {/* Step 01 - Left aligned */}
-            <div style={{ 
+            <div className="how-step how-step--left" style={{ 
               display: 'flex', 
               gap: '2rem', 
               alignItems: 'flex-start',
@@ -110,7 +110,7 @@ export default function Home() {
               maxWidth: '60%',
               alignSelf: 'flex-start'
             }}>
-              <div style={{
+              <div className="how-step-number" style={{
                 fontSize: '120px',
                 fontWeight: 700,
                 color: '#EBA5B1 !important',
@@ -122,7 +122,7 @@ export default function Home() {
               }}>
                 01
               </div>
-              <div style={{ position: 'relative', zIndex: 1, marginLeft: '60px' }}>
+              <div className="how-step-content" style={{ position: 'relative', zIndex: 1, marginLeft: '60px' }}>
                 <h3 style={{ 
                   fontSize: '16px', 
                   fontWeight: 700, 
@@ -140,7 +140,7 @@ export default function Home() {
             </div>
 
             {/* Step 02 - Right aligned */}
-            <div style={{ 
+            <div className="how-step how-step--right" style={{ 
               display: 'flex', 
               gap: '2rem', 
               alignItems: 'flex-start',
@@ -149,7 +149,7 @@ export default function Home() {
               maxWidth: '60%',
               alignSelf: 'flex-end'
             }}>
-              <div style={{
+              <div className="how-step-number" style={{
                 fontSize: '120px',
                 fontWeight: 700,
                 color: '#EBA5B1 !important',
@@ -161,7 +161,7 @@ export default function Home() {
               }}>
                 02
               </div>
-              <div style={{ position: 'relative', zIndex: 1, marginLeft: '60px' }}>
+              <div className="how-step-content" style={{ position: 'relative', zIndex: 1, marginLeft: '60px' }}>
                 <h3 style={{ 
                   fontSize: '16px', 
                   fontWeight: 700, 
@@ -179,7 +179,7 @@ export default function Home() {
             </div>
 
             {/* Step 03 - Left aligned */}
-            <div style={{ 
+            <div className="how-step how-step--left" style={{ 
               display: 'flex', 
               gap: '2rem', 
               alignItems: 'flex-start',
@@ -188,7 +188,7 @@ export default function Home() {
               maxWidth: '60%',
               alignSelf: 'flex-start'
             }}>
-              <div style={{
+              <div className="how-step-number" style={{
                 fontSize: '120px',
                 fontWeight: 700,
                 color: '#EBA5B1 !important',
@@ -200,7 +200,7 @@ export default function Home() {
               }}>
                 03
               </div>
-              <div style={{ position: 'relative', zIndex: 1, marginLeft: '60px' }}>
+              <div className="how-step-content" style={{ position: 'relative', zIndex: 1, marginLeft: '60px' }}>
                 <h3 style={{ 
                   fontSize: '16px', 
                   fontWeight: 700, 

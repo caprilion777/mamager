@@ -57,10 +57,10 @@ export default function SubscribeForm() {
     cursor: 'pointer',
     transition: 'all 0.3s ease',
     whiteSpace: 'nowrap' as const,
-    display: 'flex',
-    alignItems: 'center',
-    padding: '13px 20px',
+    display: 'inline-block',
+    padding: '0 20px',
     height: '41px',
+    lineHeight: '41px',
     position: 'relative' as const,
     overflow: 'hidden',
     boxShadow: '0 4px 15px rgba(235, 110, 138, 0.3)'
@@ -108,7 +108,7 @@ export default function SubscribeForm() {
         margin: '0 16px',
         zIndex: 1
       }}>
-        <h2 style={{
+        <h2 className="subscribe-title" style={{
           fontSize: '24px',
           fontWeight: 700,
           color: '#EB6E8A',
@@ -117,7 +117,7 @@ export default function SubscribeForm() {
         }}>
           Be the first to know our start!
         </h2>
-        <p style={{
+        <p className="subscribe-subtitle" style={{
           fontWeight: 600,
           color: '#EB6E8A',
           marginBottom: '2.5rem',
@@ -127,29 +127,32 @@ export default function SubscribeForm() {
         }}>
           Subscribe and you will be the first to get access to our service, including bonuses for early users
         </p>
-        <form style={{
-          display: 'flex',
-          gap: '1rem',
-          maxWidth: 400,
-          margin: '0 auto',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
-          <input
-            type="email"
-            placeholder="Your Email"
-            style={{
-              ...inputStyle,
-              flex: 1,
-              minWidth: 180
-            }}
-            onFocus={(e) => (e.target as HTMLInputElement).style.borderColor = '#EB6E8A'}
-            onBlur={(e) => (e.target as HTMLInputElement).style.borderColor = '#e0e0e0'}
-          />
+        <form
+          className="subscribe-form"
+          style={{
+            display: 'flex',
+            gap: '1rem',
+            maxWidth: 400,
+            margin: '0 auto',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <div className="subscribe-input-wrap" style={{ flex: 1, minWidth: 180 }}>
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="subscribe-input"
+              style={{
+                ...inputStyle,
+                width: '100%'
+              }}
+            />
+          </div>
                      <button
              type="submit"
              style={buttonStyle}
-             className="shimmer-button"
+             className="shimmer-button subscribe-button"
            >
              Subscribe
            </button>
