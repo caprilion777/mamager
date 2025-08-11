@@ -62,7 +62,7 @@ export default function Header() {
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 600;
 
   return (
-    <header style={{ position: 'fixed', top: 0, left: 0, width: '100vw', zIndex: 1000, background: '#FDF2ED', borderBottom: 'none', height: 64, minHeight: 64, display: 'flex', alignItems: 'center', boxShadow: '0 8px 32px 0 rgba(0,0,0,0.24)' }}>
+    <header style={{ position: 'fixed', top: 0, left: 0, width: '100vw', zIndex: 1000, background: isMobile ? '#FDF2ED' : 'rgba(253, 242, 237, 0.5)', borderBottom: 'none', height: 64, minHeight: 64, display: 'flex', alignItems: 'center', boxShadow: '0 8px 32px 0 rgba(0,0,0,0.24)' }}>
       <div style={{ maxWidth: 1024, margin: '0 auto', padding: '0 16px', display: 'flex', alignItems: 'center', height: 64, width: '100%', position: 'relative' }}>
         <Link
           href="/"
