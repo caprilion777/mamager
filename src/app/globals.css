@@ -172,8 +172,12 @@ a {
   }
 }
 
+.subscribe-bg-parallax {
+  background-repeat: no-repeat;
+  background-size: cover !important;
+}
 @media (max-width: 768px) {
   .subscribe-bg-parallax {
-    background-size: 120% !important;
+    /* background-size: 120% !important; */
   }
 }
