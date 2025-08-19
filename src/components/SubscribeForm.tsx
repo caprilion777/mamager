@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
 export default function SubscribeForm() {
   // Add light sweep animation
@@ -34,6 +34,26 @@ export default function SubscribeForm() {
     return () => {
       document.head.removeChild(style);
     };
+  }, []);
+
+  const bgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!bgRef.current) return;
+      const section = bgRef.current.parentElement;
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      if (rect.bottom > 0 && rect.top < windowHeight) {
+        const parallax = Math.round(rect.top * 0.3); // adjust for effect
+        bgRef.current.style.transform = `translateY(${parallax}px)`;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Initial call
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   const inputStyle = {
     fontSize: '16px',
@@ -77,18 +97,22 @@ export default function SubscribeForm() {
       margin: 0
     }}>
       {/* Background Image with Parallax */}
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundImage: 'url(/subscribe-bg.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        zIndex: -2
-      }} />
+      <div
+        ref={bgRef}
+        className="subscribe-bg-parallax"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: "url(/subscribe-bg.jpg)",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          zIndex: -2,
+          willChange: 'transform',
+        }}
+      />
       {/* Overlay */}
       <div style={{
         position: 'absolute',
