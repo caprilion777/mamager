@@ -171,3 +171,9 @@ a {
     align-items: flex-start !important;
   }
 }
+
+@media (max-width: 768px) {
+  .subscribe-bg-parallax {
+    background-size: 120% !important;
+  }
+}

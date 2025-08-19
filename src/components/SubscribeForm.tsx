@@ -47,7 +47,11 @@ export default function SubscribeForm() {
       const windowHeight = window.innerHeight;
       if (rect.bottom > 0 && rect.top < windowHeight) {
         const parallax = Math.round(rect.top * 0.3); // adjust for effect
-        bgRef.current.style.transform = `translateY(${parallax}px)`;
+        if (window.innerWidth <= 768) {
+          bgRef.current.style.transform = `scale(1.2) translateY(${parallax}px)`;
+        } else {
+          bgRef.current.style.transform = `translateY(${parallax}px)`;
+        }
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
