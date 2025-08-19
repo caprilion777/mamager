@@ -172,12 +172,20 @@ a {
   }
 }
 
+.subscribe-section {
+  position: relative;
+  overflow: hidden;
+}
+
 .subscribe-bg-parallax {
   background-repeat: no-repeat;
   background-size: cover !important;
+  background-position: center;
 }
-@media (max-width: 768px) {
+
+/* Remove parallax effect for all viewports */
+@media (min-width: 1024px) {
   .subscribe-bg-parallax {
-    /* background-size: 120% !important; */
+    background-attachment: fixed;
   }
 }

@@ -113,7 +113,7 @@ export default function Home() {
               <div className="how-step-number" style={{
                 fontSize: '120px',
                 fontWeight: 700,
-                color: '#EBA5B1 !important',
+                color: '#EBA5B1',
                 lineHeight: 1,
                 position: 'absolute',
                 left: '-20px',
@@ -152,7 +152,7 @@ export default function Home() {
               <div className="how-step-number" style={{
                 fontSize: '120px',
                 fontWeight: 700,
-                color: '#EBA5B1 !important',
+                color: '#EBA5B1',
                 lineHeight: 1,
                 position: 'absolute',
                 left: '-20px',
@@ -191,7 +191,7 @@ export default function Home() {
               <div className="how-step-number" style={{
                 fontSize: '120px',
                 fontWeight: 700,
-                color: '#EBA5B1 !important',
+                color: '#EBA5B1',
                 lineHeight: 1,
                 position: 'absolute',
                 left: '-20px',

@@ -11,12 +11,13 @@ export default function ConditionalLayout({
 }) {
   const pathname = usePathname();
   const isTermsPage = pathname === '/terms';
+  const isCookiesPage = pathname === '/cookies';
 
   return (
     <>
-      {!isTermsPage && <Header />}
+      {!isTermsPage && !isCookiesPage && <Header />}
       {children}
-      {!isTermsPage && <Footer />}
+      {!isTermsPage && !isCookiesPage && <Footer />}
     </>
   );
 } 

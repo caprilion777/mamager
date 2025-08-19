@@ -39,12 +39,29 @@ export default function SubscribeForm() {
   const bgRef = useRef<HTMLDivElement>(null);
   // Remove parallax effect, just set scale for mobile
   useEffect(() => {
-    if (!bgRef.current) return;
-    if (window.innerWidth <= 768) {
-      bgRef.current.style.transform = 'scale(1.2)';
-    } else {
-      bgRef.current.style.transform = '';
+    function handleScroll() {
+      if (!bgRef.current) return;
+      if (window.innerWidth < 1024) {
+        bgRef.current.style.backgroundPosition = 'center';
+        return;
+      }
+      const section = bgRef.current.parentElement;
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      if (rect.bottom > 0 && rect.top < windowHeight) {
+        const speed = 0.5;
+        const offset = -rect.top * speed;
+        bgRef.current.style.backgroundPosition = `center ${offset}px`;
+      }
     }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+    handleScroll();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
   const inputStyle = {
     fontSize: '16px',
@@ -78,7 +95,7 @@ export default function SubscribeForm() {
   };
 
   return (
-    <section id="subscribe" style={{ 
+    <section id="subscribe" className="subscribe-section" style={{ 
       minHeight: '100vh',
       position: 'relative',
       display: 'flex',

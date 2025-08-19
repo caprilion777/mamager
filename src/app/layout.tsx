@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ConditionalLayout from "../components/ConditionalLayout";
+import CookieBanner from "../components/CookieBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon-v2.ico" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <CookieBanner />
         <ConditionalLayout>
           {children}
         </ConditionalLayout>

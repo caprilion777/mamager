@@ -14,13 +14,20 @@ export default function Top10Page() {
       <h1 style={{
         textAlign: 'center',
         marginBottom: 8,
-        fontSize: '2.2rem',
+        fontSize: '1.7rem',
         fontWeight: 700,
         color: '#EB6E8A',
         letterSpacing: '-1px',
       }}>
         Top 10 Goods Right Now
       </h1>
+      <style>{`
+        @media (max-width: 700px) {
+          h1 {
+            font-size: 1.7rem !important;
+          }
+        }
+      `}</style>
       <div style={{ textAlign: 'center', color: '#EB6E8A', fontWeight: 600, fontSize: 18, marginBottom: 4 }}>
         Curated by Mamager.ai — trusted picks to save you time and money.
       </div>
