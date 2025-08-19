@@ -33,7 +33,8 @@ export default function Hero() {
           fontWeight: 'bold',
           marginBottom: '4rem',
           textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
-          textAlign: 'center'
+          textAlign: 'center',
+          fontSize: 'clamp(1.8rem, 4vw, 2.8rem)'
         }}>
           <div>Smart Baby Shopping</div>
           <div>Planning with Mamager.ai</div>
@@ -45,6 +46,48 @@ export default function Hero() {
         }}>
           Efficiently organize everything your baby needs, saving you time and money
         </p>
+        
+        {/* Top 10 Goods heading */}
+        <div className={styles.heroTitle} style={{
+          fontWeight: 'bold',
+          marginTop: '3rem',
+          marginBottom: '2rem',
+          textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
+          textAlign: 'center',
+          fontSize: 'clamp(1.8rem, 4vw, 2.8rem)'
+        }}>
+          Top 10 Goods Right Now
+        </div>
+        
+        {/* See Full List button */}
+        <a 
+          href="/top-10" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{
+            fontSize: '16px',
+            fontWeight: 600,
+            border: 'none',
+            borderRadius: '999px',
+            background: '#EB6E8A',
+            color: 'white',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            whiteSpace: 'nowrap',
+            display: 'inline-block',
+            padding: '0 20px',
+            height: '41px',
+            lineHeight: '41px',
+            position: 'relative',
+            overflow: 'hidden',
+            boxShadow: '0 4px 15px rgba(235, 110, 138, 0.3)',
+            textDecoration: 'none',
+            textAlign: 'center'
+          }}
+          className="shimmer-button"
+        >
+          See the Full List →
+        </a>
       </div>
     </section>
   );

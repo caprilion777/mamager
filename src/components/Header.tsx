@@ -92,7 +92,7 @@ export default function Header() {
           <span
             style={{
               display: 'block',
-              width: 28,
+              width: 22.4,
               height: 3,
               background: '#EB6E8A',
               marginBottom: 6,
@@ -105,7 +105,7 @@ export default function Header() {
           <span
             style={{
               display: 'block',
-              width: 28,
+              width: 22.4,
               height: 3,
               background: '#EB6E8A',
               marginBottom: 6,
@@ -117,7 +117,7 @@ export default function Header() {
           <span
             style={{
               display: 'block',
-              width: 28,
+              width: 22.4,
               height: 3,
               background: '#EB6E8A',
               borderRadius: 2,
