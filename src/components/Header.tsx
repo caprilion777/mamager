@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { href: '#features', label: 'Key Features and Benefits' },
@@ -15,6 +16,8 @@ export default function Header() {
   const [clickedSection, setClickedSection] = useState('');
   const [clickTimeout, setClickTimeout] = useState<NodeJS.Timeout | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const hideNav = pathname === '/top-10';
 
   useEffect(() => {
     const headerHeight = 64;
@@ -72,6 +75,7 @@ export default function Header() {
           <Image src="/logo.png" alt="mamager logo" width={160} height={160} className="header-logo-img" />
         </Link>
         {/* Burger icon for mobile */}
+        {!hideNav && (
         <button
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           onClick={() => setMenuOpen(v => !v)}
@@ -128,7 +132,9 @@ export default function Header() {
             }}
           />
         </button>
+        )}
         {/* Desktop nav */}
+        {!hideNav && (
         <nav
           style={{
             display: 'flex',
@@ -164,7 +170,9 @@ export default function Header() {
             </a>
           ))}
         </nav>
+        )}
         {/* Mobile nav overlay */}
+        {!hideNav && (
         <nav
           style={{
             display: menuOpen ? 'flex' : 'none',
@@ -203,6 +211,7 @@ export default function Header() {
             </a>
           ))}
         </nav>
+        )}
       </div>
       <style jsx>{`
         .site-header {
