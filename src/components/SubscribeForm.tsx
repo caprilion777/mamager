@@ -37,27 +37,14 @@ export default function SubscribeForm() {
   }, []);
 
   const bgRef = useRef<HTMLDivElement>(null);
-
+  // Remove parallax effect, just set scale for mobile
   useEffect(() => {
-    const handleScroll = () => {
-      if (!bgRef.current) return;
-      const section = bgRef.current.parentElement;
-      if (!section) return;
-      const rect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      if (rect.bottom > 0 && rect.top < windowHeight) {
-        const parallax = Math.round(rect.top * 0.3); // adjust for effect
-        if (window.innerWidth <= 768) {
-          bgRef.current.style.transform = `scale(1.2) translateY(${parallax}px)`;
-        } else {
-          bgRef.current.style.transform = `translateY(${parallax}px)`;
-        }
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    // Initial call
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    if (!bgRef.current) return;
+    if (window.innerWidth <= 768) {
+      bgRef.current.style.transform = 'scale(1.2)';
+    } else {
+      bgRef.current.style.transform = '';
+    }
   }, []);
   const inputStyle = {
     fontSize: '16px',
