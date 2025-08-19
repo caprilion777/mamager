@@ -24,7 +24,7 @@ export default function Top10Page() {
         fontFamily: 'Montserrat, Arial, sans-serif'
       }}>
         <p style={{ textAlign: 'center', marginBottom: '40px', color: '#666' }}>
-          Coming soon! We're curating the best baby products for you.
+          Coming soon! We&apos;re curating the best baby products for you.
         </p>
         
         <div style={{ 
