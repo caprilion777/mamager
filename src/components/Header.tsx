@@ -66,9 +66,10 @@ export default function Header() {
           onClick={() => {
             if (menuOpen) setMenuOpen(false);
           }}
-          style={{ position: 'absolute', left: 16, height: '100%', display: 'flex', alignItems: 'center', zIndex: 200 }}
+          className="header-logo"
+          style={{ position: 'absolute', left: 16, display: 'flex', alignItems: 'center', zIndex: 200, height: '100%' }}
         >
-          <Image src="/logo.png" alt="mamager logo" width={160} height={160} style={{ objectFit: 'contain', flexShrink: 0, height: '100%', width: 'auto' }} />
+          <Image src="/logo.png" alt="mamager logo" width={160} height={160} className="header-logo-img" />
         </Link>
         {/* Burger icon for mobile */}
         <button
@@ -206,6 +207,13 @@ export default function Header() {
       <style jsx>{`
         .site-header {
           background: rgba(253, 242, 237, 0.5);
+        }
+        .header-logo-img {
+          object-fit: contain;
+          flex-shrink: 0;
+          display: block;
+          height: 100%;
+          width: auto;
         }
         @media (max-width: 600px) {
           .site-header {
