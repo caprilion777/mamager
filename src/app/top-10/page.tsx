@@ -1,5 +1,6 @@
 import { top10 } from '@/data/top10';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Top10Page() {
   return (
@@ -35,7 +36,7 @@ export default function Top10Page() {
           maxWidth: 700,
         }}
       >
-        {top10.map((item, i) => (
+        {top10.map((item) => (
           <div
             key={item.title}
             style={{
@@ -113,14 +114,14 @@ export default function Top10Page() {
         As an Amazon Associate, Mamager.ai earns from qualifying purchases. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.
       </div>
       <div style={{ textAlign: 'center', margin: '32px 0 48px 0' }}>
-        <a href="/#subscribe" style={{
+        <Link href="/#subscribe" style={{
           color: '#EB6E8A',
           fontWeight: 700,
           fontSize: 18,
           textDecoration: 'underline',
         }}>
           Want your own personalized list, tailored to your baby’s age and needs? → Subscribe Now
-        </a>
+        </Link>
       </div>
     </div>
   );
