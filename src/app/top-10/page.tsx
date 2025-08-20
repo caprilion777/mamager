@@ -128,7 +128,7 @@ export default function Top10Page() {
         <div style={{ fontSize: 18, fontWeight: 700, color: '#EB6E8A' }}>
           Want your own personalized list, tailored to your baby’s age and needs?
         </div>
-        <a
+        <Link
           href="/#subscribe"
           style={{
             fontSize: '16px',
@@ -154,7 +154,7 @@ export default function Top10Page() {
           className="top10-shimmer-button"
         >
           Subscribe Now
-        </a>
+        </Link>
       </div>
     </div>
   );

@@ -20,7 +20,6 @@ export default function Header({ opaque = false }: { opaque?: boolean } = {}) {
   const hideNav = pathname === '/top-10';
 
   useEffect(() => {
-    const headerHeight = 64;
     const onScroll = () => {
       let currentSection = '';
       let maxVisibility = 0;
