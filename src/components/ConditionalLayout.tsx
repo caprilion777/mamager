@@ -15,7 +15,7 @@ export default function ConditionalLayout({
 
   return (
     <>
-      {!isTermsPage && !isCookiesPage && <Header />}
+      {!isTermsPage && !isCookiesPage && <Header opaque={pathname === '/top-10'} />}
       {children}
       {!isTermsPage && !isCookiesPage && <Footer />}
     </>

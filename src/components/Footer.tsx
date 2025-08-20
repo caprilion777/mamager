@@ -1,28 +1,16 @@
 'use client';
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function Footer() {
-  const router = useRouter();
-
-  function handleLogoClick(e: React.MouseEvent<HTMLAnchorElement>) {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    setTimeout(() => {
-      router.push("/");
-    }, 500);
-  }
-
   return (
-    <footer style={{ width: '100vw', background: '#000000', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 0 }}>
+    <footer style={{ width: '100vw', background: '#000000', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 0, boxShadow: '0 -8px 32px 0 rgba(0,0,0,0.24)' }}>
       <div className="footer-inner" style={{ maxWidth: 1024, width: '100%', display: 'flex', alignItems: 'center', flexDirection: 'row', padding: '0 16px', height: '100%', position: 'relative' }}>
         <Link
           href="/"
           className="footer-logo"
           style={{ display: 'flex', alignItems: 'center', height: 64, minWidth: 0, background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
-          onClick={handleLogoClick}
         >
           <Image src="/logo.png" alt="mamager logo" width={160} height={64} style={{ objectFit: 'contain', flexShrink: 0, height: 64, width: 'auto' }} />
         </Link>

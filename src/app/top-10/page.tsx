@@ -1,17 +1,21 @@
+'use client';
+
 import { top10 } from '@/data/top10';
 import Image from 'next/image';
 import Link from 'next/link';
+import useShimmerButtonEffect from '@/components/useShimmerButtonEffect';
 
 export default function Top10Page() {
+  useShimmerButtonEffect('.top10-shimmer-button');
   return (
     <div style={{
       maxWidth: 900,
       margin: '0 auto',
-      padding: '5.6rem 16px 0 16px',
+      padding: '7rem 16px 0 16px',
       fontFamily: 'Montserrat, Arial, sans-serif',
       color: '#333',
     }}>
-      <h1 style={{
+      {/* <h1 style={{
         textAlign: 'center',
         marginBottom: 8,
         fontSize: '1.7rem',
@@ -20,7 +24,7 @@ export default function Top10Page() {
         letterSpacing: '-1px',
       }}>
         Top 10 Goods Right Now
-      </h1>
+      </h1> */}
       <style>{`
         @media (max-width: 700px) {
           h1 {
@@ -28,7 +32,7 @@ export default function Top10Page() {
           }
         }
       `}</style>
-      <div style={{ textAlign: 'center', color: '#EB6E8A', fontWeight: 600, fontSize: 18, marginBottom: 4 }}>
+      <div style={{ textAlign: 'center', color: '#EB6E8A', fontWeight: 700, fontSize: 18, marginBottom: 4 }}>
         Curated by Mamager.ai — trusted picks to save you time and money.
       </div>
       <div style={{ textAlign: 'center', color: '#888', fontSize: 13, marginBottom: 32 }}>
@@ -121,14 +125,36 @@ export default function Top10Page() {
         As an Amazon Associate, Mamager.ai earns from qualifying purchases. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.
       </div>
       <div style={{ textAlign: 'center', margin: '32px 0 48px 0' }}>
-        <Link href="/#subscribe" style={{
-          color: '#EB6E8A',
-          fontWeight: 700,
-          fontSize: 18,
-          textDecoration: 'underline',
-        }}>
-          Want your own personalized list, tailored to your baby’s age and needs? → Subscribe Now
-        </Link>
+        <div style={{ fontSize: 18, fontWeight: 700, color: '#EB6E8A' }}>
+          Want your own personalized list, tailored to your baby’s age and needs?
+        </div>
+        <a
+          href="/#subscribe"
+          style={{
+            fontSize: '16px',
+            fontWeight: 600,
+            border: 'none',
+            borderRadius: '999px',
+            background: '#EB6E8A',
+            color: 'white',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            whiteSpace: 'nowrap',
+            display: 'inline-block',
+            padding: '0 20px',
+            height: '41px',
+            lineHeight: '41px',
+            position: 'relative',
+            overflow: 'hidden',
+            boxShadow: '0 4px 15px rgba(235, 110, 138, 0.3)',
+            marginTop: 18,
+            textDecoration: 'none',
+            verticalAlign: 'middle',
+          }}
+          className="top10-shimmer-button"
+        >
+          Subscribe Now
+        </a>
       </div>
     </div>
   );

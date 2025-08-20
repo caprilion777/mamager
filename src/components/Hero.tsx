@@ -46,24 +46,9 @@ export default function Hero() {
         }}>
           Efficiently organize everything your baby needs, saving you time and money
         </p>
-        
-        {/* Top 10 Goods heading */}
-        <div className={styles.heroTitle} style={{
-          fontWeight: 'bold',
-          marginTop: '3rem',
-          marginBottom: '2rem',
-          textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
-          textAlign: 'center',
-          fontSize: 'clamp(1.8rem, 4vw, 2.8rem)'
-        }}>
-          Top 10 Goods Right Now
-        </div>
-        
-        {/* See Full List button */}
+        <div style={{ margin: '2.5rem 0' }} />
         <a 
-          href="/top-10" 
-          target="_blank" 
-          rel="noopener noreferrer"
+          href="/top-10"
           style={{
             fontSize: '16px',
             fontWeight: 600,
@@ -86,7 +71,7 @@ export default function Hero() {
           }}
           className="shimmer-button"
         >
-          See the Full List →
+          Top 10 Goods &rarr;
         </a>
       </div>
     </section>

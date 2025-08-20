@@ -11,7 +11,7 @@ const navLinks = [
   { href: '#subscribe', label: 'Subscribe Now' },
 ];
 
-export default function Header() {
+export default function Header({ opaque = false }: { opaque?: boolean } = {}) {
   const [active, setActive] = useState('');
   const [clickedSection, setClickedSection] = useState('');
   const [clickTimeout, setClickTimeout] = useState<NodeJS.Timeout | null>(null);
@@ -62,7 +62,7 @@ export default function Header() {
   };
 
   return (
-    <header className="site-header" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', zIndex: 1000, borderBottom: 'none', height: 64, minHeight: 64, display: 'flex', alignItems: 'center', boxShadow: '0 8px 32px 0 rgba(0,0,0,0.24)' }}>
+    <header className="site-header" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', zIndex: 1000, borderBottom: 'none', height: 64, minHeight: 64, display: 'flex', alignItems: 'center', boxShadow: '0 8px 32px 0 rgba(0,0,0,0.24)', background: opaque ? '#FDF2ED' : undefined }}>
       <div style={{ maxWidth: 1024, margin: '0 auto', padding: '0 16px', display: 'flex', alignItems: 'center', height: 64, width: '100%', position: 'relative' }}>
         <Link
           href="/"
@@ -215,7 +215,7 @@ export default function Header() {
       </div>
       <style jsx>{`
         .site-header {
-          background: rgba(253, 242, 237, 0.5);
+          background: ${opaque ? '#FDF2ED' : 'rgba(253, 242, 237, 0.5)'};
         }
         .header-logo-img {
           object-fit: contain;
